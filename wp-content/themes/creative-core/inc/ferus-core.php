@@ -17,7 +17,7 @@ function ferus_core_enqueue_custom_scripts() {
         wp_enqueue_style('fc-lightbox', get_template_directory_uri() . '/css/featherlight.min.css');
     }
     wp_enqueue_style('fc-default-style', get_template_directory_uri() . '/css/ferus-core.css');
-    wp_enqueue_style('fc-animate', get_template_directory_uri() . '/css/animate.min.css');
+    //wp_enqueue_style('fc-animate', get_template_directory_uri() . '/css/animate.min.css');
     /*==========*/
     /*--- JS ---*/
     /*==========*/
@@ -730,7 +730,7 @@ function must_reads_shortcode($atts, $content = null) {
 
                         </article>
                     </div><!-- .post-item -->
-                <?php endwhile; ?>
+                <?php endwhile; wp_reset_postdata(); ?>
             </div><!-- .row -->
         </div><!-- .container -->
     <?php else : ?>
@@ -749,8 +749,10 @@ function slick_sliders_shortcode($atts, $content = null) {
     // Attributes
     extract(shortcode_atts(
             array(
-                'id' => '4',
+                'id' => '',
+                'name' => '',
                 'category' => '',
+                'slider_type' => '',
             ), $atts)
     );
 
@@ -758,7 +760,9 @@ function slick_sliders_shortcode($atts, $content = null) {
     $slider_args = array(
         'post_type' => 'sliders',
         'p' => $id,
+        'name' => $name,
         'posts_per_page' => 1,
+        'slider_type' => $slider_type,
     );
     $slider_query = new WP_Query($slider_args);
     if ($slider_query->have_posts()) : ?>
@@ -800,10 +804,13 @@ function slick_sliders_shortcode($atts, $content = null) {
                     <?php endwhile; ?>
                 <?php endif; ?>
 
-            <?php endwhile; ?>
+            <?php endwhile; wp_reset_postdata(); ?>
         </div><!-- .slick-slider-wrap -->
     <?php else : ?>
-        <p>Sorry! No posts found within your criteria.</p>
+        <div style="text-align:center;">
+            <p>Sorry! No slider found. Click the button below to create one.</p>
+            <p><a href="/wp-admin/edit.php?post_type=sliders">Create Slider</a></p>
+        </div>
     <?php endif;
     $output = ob_get_clean();
     return $output;

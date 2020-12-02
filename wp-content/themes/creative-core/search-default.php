@@ -29,7 +29,7 @@ get_header(); ?>
 
             <main id="main" class="site-main container" role="main">
                 <div class="row posts-grid-wrapper">
-                    <div class="col-sm-8 col-md-9">
+                    <div class="col-sm-12 col-md-9">
                         <?php
                         if (have_posts()) :
                             /* Start the Loop */
@@ -43,15 +43,15 @@ get_header(); ?>
                                     <article id="post-<?php echo $post->ID; ?>" class="post-<?php echo $post->ID; ?> post-inner">
 
                                         <?php if ($image): ?>
-                                            <a class="post-thumb" href="<?php echo get_permalink($post->ID); ?>" data-col="post-inner" style="background-image: url(<?php echo $image[0] ?>);"></a>
+                                            <a class="post-thumb" href="<?php echo get_permalink($post->ID); ?>" style="background-image: url(<?php echo $image[0] ?>);"></a>
                                         <?php else: ?>
-                                            <a class="post-thumb" href="<?php echo get_permalink($post->ID); ?>" data-col="post-inner" style="background-image: url(/wp-content/themes/creative-core/inc/images/hero.jpg);"></a>
+                                            <a class="post-thumb" href="<?php echo get_permalink($post->ID); ?>" style="background-image: url(/wp-content/themes/creative-core/inc/images/hero.jpg);"></a>
                                         <?php endif; ?>
 
-                                        <div class="post-content panel line" data-col="post-inner">
+                                        <div class="post-content panel line">
                                             <!-- <div class="category">
-                                            <?php // the_category( ' | ', '', $post->ID ); ?>
-                                    </div> -->
+                                                <?php // the_category( ' | ', '', $post->ID ); ?>
+                                            </div> -->
                                             <h2 class="post-title">
                                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                             </h2>

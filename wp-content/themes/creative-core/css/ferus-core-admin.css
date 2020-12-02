@@ -49,3 +49,15 @@
     vertical-align: middle;
     font-weight: 400;
 }
+/*-------------------------------*/
+/*--- Sliders Post Type | ACF ---*/
+/*-------------------------------*/
+.post-type-sliders .acf-field-repeater .acf-table tr td {
+    border-bottom: 2px solid #cccccc;
+}
+.post-type-sliders .acf-field-repeater .acf-table tr:nth-of-type(odd) td {
+    background: #ffffff;
+}
+.post-type-sliders .acf-field-repeater .acf-table tr:nth-of-type(even) td {
+    background: #eaeaea;
+}
