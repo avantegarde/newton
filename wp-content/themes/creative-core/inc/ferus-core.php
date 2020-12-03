@@ -744,6 +744,29 @@ add_shortcode('must-reads', 'must_reads_shortcode');
 /******************************************************************************
  * Custom Slick Sliders Shortcode
  ******************************************************************************/
+/**
+ * Add Shortcode column to sliders custom post type admin view
+ */
+function sliders_add_sc_columns($columns) {
+    $post_type = get_post_type();
+    if ( $post_type == 'sliders' ) {
+        unset( $columns['new_post_thumb'] );
+        $new_columns = array(
+            'shortcode' => esc_html__( 'Shortcode', 'text_domain' ),
+        );
+        return array_merge($columns, $new_columns);
+    }
+}
+function sliders_sc_columns_content($column_name, $post_ID) {
+    if ($column_name == 'shortcode') {
+        echo '[slick-slider id="'.$post_ID.'"]';
+    }
+}
+add_filter('manage_sliders_posts_columns',  'sliders_add_sc_columns');
+add_action('manage_sliders_posts_custom_column', 'sliders_sc_columns_content', 10, 2);
+/**
+ * Custom Slick Sliders Shortcode
+ */
 function slick_sliders_shortcode($atts, $content = null) {
     ob_start();
     // Attributes
