@@ -765,47 +765,19 @@ function slick_sliders_shortcode($atts, $content = null) {
         'slider_type' => $slider_type,
     );
     $slider_query = new WP_Query($slider_args);
-    if ($slider_query->have_posts()) : ?>
-        <?php
-        $slider_type = $slider_args['slider_type'];
-        $slider_class = 'slick_default';
-        if ($slider_type === 'slideset') {
-            $slider_class = 'slick_slideset';
-        } else if ($slider_type === 'gallery') {
-            $slider_class = 'slick_gallery';
-        }
-        ?>
-        <div class="slick-slider-wrap <?php echo $slider_class.' '.$post->post_name; ?>">
-            <?php while ( $slider_query->have_posts() ) : $slider_query->the_post(); ?>
+    if ($slider_query->have_posts()) : 
+        while ( $slider_query->have_posts() ) : $slider_query->the_post();
 
-                <?php if( have_rows('cc_slides') ): ?>
-                    <?php while( have_rows('cc_slides') ): the_row(); 
-                        $image = get_sub_field('cc_slide_image');
-                        $caption_location = get_sub_field('cc_slide_caption_location');
-                        $title = get_sub_field('cc_slide_title');
-                        $subline = get_sub_field('cc_slide_copy');
-                        ?>
-                        <div class="" style="background-image:url('<?php echo $image; ?>');">
-                            <div class="slide-caption <?php echo $caption_location; ?> line-box">
-                                <h3 class="section-title"><?php echo $title; ?></h3>
-                                <p class="subline"><?php echo $subline; ?></p>
-                                <?php if( have_rows('cc_slide_button') ): ?>
-                                    <?php while( have_rows('cc_slide_button') ): the_row(); 
-                                        $button_text = get_sub_field('cc_slide_button_text');
-                                        $button_url = get_sub_field('cc_slide_button_url');
-                                        ?>
-                                        <?php if ($button_text && $button_url) : ?>
-                                            <a href="<?php echo $button_url; ?>" data-button="arrow"><?php echo $button_text; ?></a>
-                                        <?php endif; ?>
-                                    <?php endwhile; ?>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    <?php endwhile; ?>
-                <?php endif; ?>
+            $slider_type = get_field('cc_slider_type');
+            if ($slider_type === 'slideset') {
+                get_template_part('template-parts/slider', 'slideset');
+            } else {
+                get_template_part('template-parts/slider', 'default');
+            }
 
-            <?php endwhile; wp_reset_postdata(); ?>
-        </div><!-- .slick-slider-wrap -->
+        endwhile;
+        wp_reset_postdata();
+    ?>
     <?php else : ?>
         <div style="text-align:center;">
             <p>Sorry! No slider found. Click the button below to create one.</p>

@@ -40,22 +40,6 @@ jQuery(document).ready(function ($) {
         }
     });
     /**
-     * Homepage Slider
-     */
-    $('.slick_default').slick({
-        infinite: true,
-        dots: true,
-        arrows: false,
-    });
-    /**
-     * Testimonials Slider
-     */
-    $('.testimonial_slider').slick({
-        infinite: true,
-        dots: false,
-        arrows: true,
-    });
-    /**
      * Slideset Products
      */
     $('.slideset-products').slick({
@@ -92,24 +76,6 @@ jQuery(document).ready(function ($) {
             // settings: "unslick"
             // instead of a settings object
         ]
-    });
-    /**
-     * Homepage Content Slider
-     */
-    $('.content_slider').slick({
-        infinite: true,
-        dots: false,
-        arrows: true
-    });
-    /**
-     * Homepage Content Slider
-     */
-    $('.content_slider_lr').slick({
-        infinite: true,
-        dots: false,
-        arrows: true,
-        fade: true,
-        cssEase: 'linear'
     });
     /**
      * Slick Tab Slider
@@ -222,190 +188,6 @@ jQuery(document).ready(function ($) {
         }
     }
     customTabToggle();
-    
-    /**
-     * Default Slideset
-     */
-    $('.slideset').slick({
-        dots: false,
-        arrows: true,
-        infinite: true,
-        speed: 800,
-        autoplay: true,
-        autoplaySpeed: 6000,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-    /**
-     * Slideset Products
-     */
-    $('.slideset-products').slick({
-        dots: false,
-        arrows: true,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ]
-    });
-    /**
-     * Gallery Slideset 3-columns
-     */
-    $('.gallery-slideset.col3').slick({
-        dots: false,
-        arrows: true,
-        infinite: true,
-        speed: 800,
-        autoplay: true,
-        autoplaySpeed: 6000,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-    /**
-     * Gallery Slideset 4-columns
-     */
-    $('.gallery-slideset.col4').slick({
-        dots: false,
-        arrows: true,
-        infinite: true,
-        speed: 800,
-        autoplay: true,
-        autoplaySpeed: 6000,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-    /**
-     * Gallery Slideset 5-columns
-     */
-    $('.gallery-slideset.col5').slick({
-        dots: false,
-        arrows: true,
-        infinite: true,
-        speed: 800,
-        autoplay: true,
-        autoplaySpeed: 6000,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-    /**
-     * Default Slideset
-     */
-    $('.slideset-5col').slick({
-        dots: false,
-        arrows: true,
-        infinite: true,
-        speed: 800,
-        autoplay: true,
-        autoplaySpeed: 6000,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
     /**
      * Listing Gallery
      * @type {*}
@@ -544,34 +326,6 @@ jQuery(window).load(function () {
     });
 
 });/* END window.load */
-
-/**
- * Match Height Columns
- * USAGE: data-col=a
- */
-function colMatchHeight() {
-    var cols = document.querySelectorAll('[data-col]'),
-        encountered = [];
-    for (i = 0; i < cols.length; i++) {
-        var attr = cols[i].getAttribute('data-col');
-        if (encountered.indexOf(attr) == -1) {
-            encountered.push(attr);
-        }
-    }
-    for (set = 0; set < encountered.length; set++) {
-        var col = document.querySelectorAll('[data-col="' + encountered[set] + '"]'),
-            group = [];
-        for (i = 0; i < col.length; i++) {
-            col[i].style.height = 'auto';
-            group.push(col[i].scrollHeight);
-        }
-        for (i = 0; i < col.length; i++) {
-            col[i].style.height = Math.max.apply(Math, group) + 'px';
-        }
-    }
-}
-window.addEventListener("load", colMatchHeight);
-window.addEventListener("resize", colMatchHeight);
 
 /**
  * Proper Parallax

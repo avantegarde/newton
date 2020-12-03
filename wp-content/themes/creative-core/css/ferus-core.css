@@ -1724,6 +1724,10 @@ section .inner.static p:last-of-type,
   position: relative;
   overflow: hidden;
 }
+.gallery-slideset .slick-track {
+  display: flex;
+  align-items: center;
+}
 .gallery-slideset .gallery-item {
   margin: 0;
   padding: 0;
