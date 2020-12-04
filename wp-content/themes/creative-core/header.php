@@ -15,7 +15,6 @@ $header_layout = get_theme_mod( 'theme_header_layout' )?get_theme_mod( 'theme_he
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <!-- <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico"/> -->
 
     <?php wp_head(); ?>
 
@@ -264,6 +263,13 @@ elseif ($header_layout == 'bar') : ?>
 <?php // START: Header Layout - Default (Logo Left)
 else : ?>
 
+    <?php if ( is_active_sidebar( 'toolbar-top' ) ) : ?>
+        <aside id="toolbar-top" class="widget-area" role="complementary">
+            <div class="container">
+                <?php dynamic_sidebar( 'toolbar-top' ); ?>
+            </div>
+        </aside>
+    <?php endif; ?>
     <header id="masthead" class="site-header" role="banner">
         <div class="header-inner">
             <div class="container">
@@ -272,75 +278,79 @@ else : ?>
                         <img src="<?php echo get_template_directory_uri() . '/inc/images/logo.png'; ?>" width="200"><span><?php bloginfo('name'); ?></span>
                     </a>
                 </h1>
-                <!-- Toolbar -->
-                <aside id="toolbar" class="widget-area" role="complementary">
-                    <?php if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) : ?>
-                        <div class="toolbar-menu-wrap">
-                            <div class="header-cart-wrap">
-                                <i class="fas fa-shopping-cart header-cart-icon" aria-hidden="true"></i>
-                                <a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
-                                    <?php echo WC()->cart->get_cart_total(); ?> - <?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?>
-                                </a>
-                                <div class="cart-dropdown">
-                                    <?php if ( is_active_sidebar( 'header-cart-dropdown' ) ) : ?>
-                                        <?php dynamic_sidebar( 'header-cart-dropdown' ); ?>
-                                    <?php endif; ?>
+                <div class="header-side">
+                    <!-- Toolbar -->
+                    <?php if ( is_active_sidebar( 'toolbar' ) || is_active_sidebar( 'header-cart-dropdown' ) ) : ?>
+                        <aside id="toolbar" class="widget-area" role="complementary">
+                            <?php if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) : ?>
+                                <div class="toolbar-menu-wrap">
+                                    <div class="header-cart-wrap">
+                                        <i class="fas fa-shopping-cart header-cart-icon" aria-hidden="true"></i>
+                                        <a class="cart-customlocation" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+                                            <?php echo WC()->cart->get_cart_total(); ?> - <?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?>
+                                        </a>
+                                        <div class="cart-dropdown">
+                                            <?php if ( is_active_sidebar( 'header-cart-dropdown' ) ) : ?>
+                                                <?php dynamic_sidebar( 'header-cart-dropdown' ); ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="alt-items">
+                                        <a href="/my-account/" class="my-account-button">My Account</a>
+                                        <span class="header-menu-divider">|</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="alt-items">
-                                <a href="/my-account/" class="my-account-button">My Account</a>
-                                <span class="header-menu-divider">|</span>
-                            </div>
-                        </div>
+                            <?php endif; ?>
+                            <?php if ( is_active_sidebar( 'toolbar' ) ) : ?>
+                                <?php dynamic_sidebar( 'toolbar' ); ?>
+                            <?php endif; ?>
+                        </aside>
                     <?php endif; ?>
-                    <?php if ( is_active_sidebar( 'toolbar' ) ) : ?>
-                        <?php dynamic_sidebar( 'toolbar' ); ?>
-                    <?php endif; ?>
-                </aside>
-                <div class="menu-wrap">
-                    <div class="main-navigation">
-                        <nav class="navbar navbar-default">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
+                    <div class="menu-wrap">
+                        <div class="main-navigation">
+                            <nav class="navbar navbar-default">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar bar1"></span>
+                                        <span class="icon-bar bar2"></span>
+                                        <span class="icon-bar bar3"></span>
+                                    </button>
+                                </div>
 
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="navbar-main">
-                                <?php
-                                // Main Menu
-                                $defaults = array(
-                                    'theme_location' => 'menu-1',
-                                    'container' => false,
-                                    'menu_class' => 'primary nav navbar-nav',
-                                    'menu_id' => 'primary'
-                                );
-                                wp_nav_menu($defaults);
-                                // Mobile Menu
-                                $mobileArgs = array(
-                                    'theme_location' => 'mobile-menu',
-                                    'container' => false,
-                                    'menu_class' => 'primary nav navbar-nav',
-                                    'menu_id' => 'mobile-menu',
-                                    'fallback_cb' => false
-                                );
-                                wp_nav_menu($mobileArgs);
-                                ?>
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="navbar-main">
+                                    <?php
+                                    // Main Menu
+                                    $defaults = array(
+                                        'theme_location' => 'menu-1',
+                                        'container' => false,
+                                        'menu_class' => 'primary nav navbar-nav',
+                                        'menu_id' => 'primary'
+                                    );
+                                    wp_nav_menu($defaults);
+                                    // Mobile Menu
+                                    $mobileArgs = array(
+                                        'theme_location' => 'mobile-menu',
+                                        'container' => false,
+                                        'menu_class' => 'primary nav navbar-nav',
+                                        'menu_id' => 'mobile-menu',
+                                        'fallback_cb' => false
+                                    );
+                                    wp_nav_menu($mobileArgs);
+                                    ?>
 
-                            </div>
-                        </nav>
-                    </div><!-- .main-navigation -->
-                </div><!-- .menu-wrap -->
-                <!-- <div class="header-search">
-                    <form role="search" method="get" class="search" action="<?php // echo esc_url(home_url('/')); ?>">
-                        <label for="search_text"><i class="fas fa-search"></i></label>
-                        <input type="text" class="search-text" id="search_text" placeholder="Site Search" value="" name="s" title="Search...">
-                    </form>
-                </div> -->
+                                </div>
+                            </nav>
+                        </div><!-- .main-navigation -->
+                    </div><!-- .menu-wrap -->
+                    <!-- <div class="header-search">
+                        <form role="search" method="get" class="search" action="<?php // echo esc_url(home_url('/')); ?>">
+                            <label for="search_text"><i class="fas fa-search"></i></label>
+                            <input type="text" class="search-text" id="search_text" placeholder="Site Search" value="" name="s" title="Search...">
+                        </form>
+                    </div> -->
+                </div><!-- .header-side -->
             </div><!-- .container -->
         </div><!-- .header-inner -->
     </header><!-- #masthead -->

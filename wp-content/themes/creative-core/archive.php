@@ -20,6 +20,7 @@ if (isset($archive_scroll->taxonomy) && $archive_scroll->taxonomy === 'category'
     $cat_id = '';
     $tag_id = '';
 }
+$blog_url = get_permalink( get_option( 'page_for_posts' ) );
 ?>
 
 <?php

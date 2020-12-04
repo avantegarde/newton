@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
+ * Search Template for Projects
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -12,10 +12,10 @@
  * @package ferus_core
  */
 
-  $cat_id = get_query_var( 'cat', '' );
-  $search_text = get_query_var( 's', '' );
-  $search_author = get_query_var( 'author', '' );
-  $blog_url = get_permalink( get_option( 'page_for_posts' ) );
+$cat_id = get_query_var( 'cat', '' );
+$search_text = get_query_var( 's', '' );
+$search_author = get_query_var( 'author', '' );
+$blog_url = get_post_type_archive_link('projects');
 get_header(); ?>
 
 <?php
@@ -36,8 +36,9 @@ get_header(); ?>
 ?>
 
 <?php
-$img = wp_get_attachment_image_src(get_post_thumbnail_id(get_option('page_for_posts')),'full');
-$image = $img ? $img[0] : get_template_directory_uri() . '/inc/images/hero.jpg';
+    $img = wp_get_attachment_image_src(get_post_thumbnail_id(get_option('page_for_posts')),'full');
+    $pageImage = $img[0];
+    $image = $pageImage ? $pageImage : get_template_directory_uri() . '/inc/images/hero.jpg';
 ?>
 <div id="page-header" class="">
     <div class="header-img parallax v-align" data-plx-img="<?php echo $image; ?>">
@@ -54,7 +55,7 @@ $image = $img ? $img[0] : get_template_directory_uri() . '/inc/images/hero.jpg';
     <div class="blog-filter container">
 
       <form role="search" method="get" class="search" action="<?php echo $blog_url; ?>">
-        <input type="hidden" name="search-type" value="blog-search"/>
+        <input type="hidden" name="search-type" value="projects-search"/>
         <input type="blog-search" class="form-control search_text" name="s" action="" aria-label="..." placeholder="Search...">
         <?php $catArgs = array(
           'show_option_all'    => 'All Categories',
@@ -62,7 +63,7 @@ $image = $img ? $img[0] : get_template_directory_uri() . '/inc/images/hero.jpg';
           'exclude'            => '1',
           'selected'           => $cat_id,
         ); ?>
-        <?php wp_dropdown_categories($catArgs); ?>
+        <?php //wp_dropdown_categories($catArgs); ?>
         <?php $authorArgs = array(
           'show_option_all'         => 'All Authors', // string
           'show_option_none'        => null, // string
@@ -125,7 +126,7 @@ $image = $img ? $img[0] : get_template_directory_uri() . '/inc/images/hero.jpg';
                                         $blog_url = get_permalink( get_option( 'page_for_posts' ) );
                                         foreach($categories as $category){
                                             $cat_name = get_cat_name($category);
-                                            echo '<a href="'.$blog_url.'?search-type=blog-search&cat='.$category.'">'.$cat_name.'</a> | ';
+                                            echo '<a href="'.$blog_url.'?search-type=projects-search&cat='.$category.'">'.$cat_name.'</a> | ';
                                         }
                                     ?>
                                     <?php // the_category( ' | ', '', $post->ID ); ?>
@@ -133,7 +134,7 @@ $image = $img ? $img[0] : get_template_directory_uri() . '/inc/images/hero.jpg';
                                 <!-- <p class="author-date"><?php // the_time('m-d-Y'); ?> | Author: <?php // the_author(); ?></p> -->
 
                                 <div class="content-blurb">
-                                    <?php echo $excerpt; ?>
+                                    <?php the_excerpt(); ?>
                                 </div>
                                 <a href="<?php the_permalink(); ?>" data-button="arrow">Learn More</a>
                             </div>

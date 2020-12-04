@@ -43,12 +43,12 @@ get_header(); ?>
                                     <article id="post-<?php echo $post->ID; ?>" class="post-<?php echo $post->ID; ?> post-inner">
 
                                         <?php if ($image): ?>
-                                            <a class="post-thumb" href="<?php echo get_permalink($post->ID); ?>" style="background-image: url(<?php echo $image[0] ?>);"></a>
+                                            <!-- <a class="post-thumb" href="<?php // echo get_permalink($post->ID); ?>" style="background-image: url(<?php echo $image[0] ?>);"></a> -->
                                         <?php else: ?>
-                                            <a class="post-thumb" href="<?php echo get_permalink($post->ID); ?>" style="background-image: url(/wp-content/themes/creative-core/inc/images/hero.jpg);"></a>
+                                            <!-- <a class="post-thumb" href="<?php // echo get_permalink($post->ID); ?>" style="background-image: url(/wp-content/themes/creative-core/inc/images/hero.jpg);"></a> -->
                                         <?php endif; ?>
 
-                                        <div class="post-content panel line">
+                                        <div class="post-content">
                                             <!-- <div class="category">
                                                 <?php // the_category( ' | ', '', $post->ID ); ?>
                                             </div> -->

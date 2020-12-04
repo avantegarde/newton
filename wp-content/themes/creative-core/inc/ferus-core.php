@@ -122,6 +122,14 @@ function ferus_core_sidebar_init() {
         'after_title'   => ' -->',
     ) );
     register_sidebar( array(
+        'name'          => __( 'Toolbar Top', 'ferus_core' ),
+        'id'            => 'toolbar-top',
+        'before_widget' => '<div class="widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<!-- ',
+        'after_title'   => ' -->',
+    ) );
+    register_sidebar( array(
         'name'          => __( 'Toolbar', 'ferus_core' ),
         'id'            => 'toolbar',
         'before_widget' => '<div class="widget">',

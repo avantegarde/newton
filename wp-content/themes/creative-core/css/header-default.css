@@ -1,14 +1,32 @@
 /*-----------------------------------------*
  *------ Header: Default (Left Logo) ------*
  *-----------------------------------------*/
+/*--- Toolbar Top ---*/
+#toolbar-top {
+  display: block;
+  width: 100%;
+  clear: both;
+  padding: 5px;
+  color: #ccc;
+  background: #23282d;
+}
+#toolbar-top .container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+#toolbar-top .widget {
+  display: block;
+  margin: 0;
+  padding: 0 0 0 10px;
+}
 /*--- Toolbar ---*/
 #toolbar {
   display: block;
-  width: calc(100% - 250px);
+  width: 100%;
   margin: 0;
   padding: 0;
   color: #555555;
-  float: right;
   text-align: right;
   background: none;
 }
@@ -46,6 +64,18 @@
   content: "";
   display: block;
   clear: both;
+}
+.header-inner > .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+header .header-side {
+  display: block;
+  width: calc(100% - 125px);
+  margin: 0;
+  padding: 0;
 }
 /*--- Header Search ---*/
 .header-search {
@@ -227,7 +257,7 @@ header #logo {
   max-width: 125px !important;
   height: auto;
   margin: 0;
-  padding: 5px 0 0 0;
+  padding: 0;
   float: left;
   position: relative;
   z-index: 99;
@@ -246,11 +276,13 @@ header nav.navbar-default {
 }
 header .menu-wrap {
   display: block;
-  width: calc(100% - 125px);
+  width: 100%;
   margin: 0;
-  padding: 10px 0 0 0;
+  padding: 0 0 5px 0;
   color: #ffffff;
-  float: left;
+}
+header .menu-wrap .main-navigation {
+  float: none;
 }
 header .menu-wrap .navbar {
   min-height: 35px;
@@ -392,7 +424,7 @@ nav.navbar-default .primary > li.dropdown-columns > ul.sub-menu > li > ul.sub-me
 }
 .navbar-toggle {
   position: absolute;
-  top: -49px;
+  top: -72px;
   right: 0;
   float: none;
   margin: 0 0 0 5px;
@@ -402,14 +434,37 @@ nav.navbar-default .primary > li.dropdown-columns > ul.sub-menu > li > ul.sub-me
   border-radius: 0;
   box-shadow: none;
 }
+.navbar-toggle:hover {
+  cursor: pointer;
+}
 .navbar-toggle .icon-bar {
   display: block;
   width: 22px;
   height: 2px;
   border-radius: 0;
+  transition: all 0.3s ease-in-out;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #555555;
+}
+.navbar-toggle[aria-expanded="true"] .icon-bar.bar1 {
+  transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  position: relative;
+  top: 6px;
+}
+.navbar-toggle[aria-expanded="true"] .icon-bar.bar2 {
+  opacity: 0;
+}
+.navbar-toggle[aria-expanded="true"] .icon-bar.bar3 {
+  transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  position: relative;
+  bottom: 6px;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
@@ -431,27 +486,15 @@ nav.navbar-default .primary > li.dropdown-columns > ul.sub-menu > li > ul.sub-me
     right: 10px;
     left: 10px;
   }
-  #toolbar {
-    padding-top: 0;
-    width: calc(100% - 250px);
-  }
-  header .menu-wrap {
-    padding-top: 5px;
-    width: calc(100% - 250px);
-}
 }
 @media screen and (max-width: 991px) {
   header #logo {
-    width: 200px;
-    padding-top: 5px;
+    width: 125px;
+    max-width: 125px !important;
   }
-  #toolbar {
-    padding-top: 0;
-    width: calc(100% - 200px);
-  }
-  header .menu-wrap {
-      padding-top: 5px;
-      width: calc(100% - 200px);
+  header .header-side {
+    width: calc(100% - 125px);
+    padding-left: 15px;
   }
   header nav.navbar-default #navbar-main > ul {
       text-align: right;
@@ -499,13 +542,19 @@ nav.navbar-default .primary > li.dropdown-columns > ul.sub-menu > li > ul.sub-me
     header #logo {
       padding-top: 0;
     }
+    .header-inner > .container {
+      justify-content: center;
+    }
+    header .header-side {
+      width: 100%;
+    }
     #toolbar {
         padding-top: 16px;
         padding-right: 50px;
     }
     header .menu-wrap {
         width: 100%;
-        padding-top: 0;
+        padding: 0;
     }
     header .menu-wrap .navbar {
         min-height: 0px;
@@ -600,13 +649,13 @@ nav.navbar-default .primary > li.dropdown-columns > ul.sub-menu > li > ul.sub-me
 }
 @media screen and (max-width:500px) {
   header #logo {
-    width: 175px;
+    width: 100px;
   }
   #toolbar {
     padding-top: 14px;
   }
   .navbar-toggle {
-    top: -44px;
+    top: -62px;
     right: 0;
     padding-right: 6px;
   }

@@ -10,12 +10,6 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('single-post'); ?>>
-    <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' ); ?>
-    <?php if($image): ?>
-        <div id="post-header" style="background-image:url(<?php echo $image[ 0 ] ?>);"></div>
-    <?php else : ?>
-        <div id="post-header" style="background-image:url(<?php echo get_template_directory_uri(); ?>/inc/images/hero.jpg);"></div>
-    <?php endif; ?>
     <div class="container">
         <div class="entry-wrap">
             <header class="entry-header">
@@ -39,6 +33,11 @@
             </header><!-- .entry-header -->
 
             <div class="entry-content">
+                <?php 
+                $feat_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+                $image = $feat_image ? $feat_image[0] : get_template_directory_uri() . '/inc/images/hero.jpg';
+                ?>
+                <div id="featured-img" style="background-image:url(<?php echo $image; ?>);"></div>
                 <?php
                 the_content( sprintf(
                 /* translators: %s: Name of current post. */
@@ -52,7 +51,6 @@
                 ) );
                 ?>
             </div><!-- .entry-content -->
-        </div>
-    </div>
-
+        </div><!-- .entry-wrap -->
+    </div><!-- .container -->
 </article><!-- #post-## -->

@@ -20,6 +20,7 @@ if (isset($archive_scroll->taxonomy) && $archive_scroll->taxonomy === 'category'
     $cat_id = '';
     $tag_id = '';
 }
+$blog_url = get_post_type_archive_link('projects');
 ?>
 
 <?php
@@ -48,7 +49,7 @@ if (isset($archive_scroll->taxonomy) && $archive_scroll->taxonomy === 'category'
     <div class="blog-filter container">
 
       <form role="search" method="get" class="search" action="<?php echo $blog_url; ?>">
-        <input type="hidden" name="search-type" value="blog-search"/>
+        <input type="hidden" name="search-type" value="projects-search"/>
         <input type="blog-search" class="form-control search_text" name="s" action="" aria-label="..." placeholder="Search...">
         <?php $catArgs = array(
           'show_option_all'    => 'All Categories',
@@ -56,7 +57,7 @@ if (isset($archive_scroll->taxonomy) && $archive_scroll->taxonomy === 'category'
           'exclude'            => '1',
           'selected'           => $cat_id,
         ); ?>
-        <?php wp_dropdown_categories($catArgs); ?>
+        <?php //wp_dropdown_categories($catArgs); ?>
         <?php $authorArgs = array(
           'show_option_all'         => 'All Authors', // string
           'show_option_none'        => null, // string
@@ -118,9 +119,9 @@ if (isset($archive_scroll->taxonomy) && $archive_scroll->taxonomy === 'category'
                                         foreach($categories as $category){
                                             $cat_name = get_cat_name($category);
                                             if ($cat_ctr === $cat_length) {
-                                                echo '<a href="'.$blog_url.'?search-type=blog-search&cat='.$category.'">'.$cat_name.'</a>';
+                                                echo '<a href="'.$blog_url.'?search-type=projects-search&cat='.$category.'">'.$cat_name.'</a>';
                                             } else {
-                                                echo '<a href="'.$blog_url.'?search-type=blog-search&cat='.$category.'">'.$cat_name.'</a> | ';
+                                                echo '<a href="'.$blog_url.'?search-type=projects-search&cat='.$category.'">'.$cat_name.'</a> | ';
                                             }
                                             $cat_ctr++;
                                         }
