@@ -2,7 +2,72 @@
 ** Custom Theme CSS
 ** Please use this file to add your custom styles
 **==================================================*/
-
+/* Homepage Header */
+header.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    /*background: rgba(255,255,255,0.8);*/
+    background: rgb(34,34,34);
+    background: linear-gradient(180deg, rgba(34,34,34,1) 0%, rgba(34,34,34,0) 75%, rgba(34,34,34,0) 100%);
+}
+header #logo {
+    border-radius: 15px;
+    padding: 5px 8px 8px 5px;
+    background: #ffffff;
+    overflow: hidden;
+}
+nav.navbar-default .primary > li > a {
+    font-size: 20px;
+    line-height: 22px;
+    color: #ffffff;
+}
+nav.navbar-default .primary > li:hover > a,
+nav.navbar-default .primary > li.current-menu-item > a,
+nav.navbar-default .primary > li.current_page_item > a,
+nav.navbar-default .primary > li.current_menu-parent > a {
+    color: #ffffff;
+    text-shadow: 0 0 5px #d72d73;
+}
+nav.navbar-default .primary > li > a:before {
+    background: #d72d73;
+}
+nav.navbar-default .primary li ul {
+    background: rgba(255,255,255,0.8);
+    border-color: #d72d73;
+    border-radius: 6px;
+}
+/* Homepage Particles Section */
+#particles-js {
+    /*radial*/
+    /*background: rgb(215,45,115);
+    background: radial-gradient(circle, rgba(215,45,115,1) 0%, rgba(130,8,70,1) 75%, rgba(34,34,34,1) 100%);*/
+    /*linear90*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    background: rgb(130,8,70);
+    background: linear-gradient(180deg, rgba(34,34,34,1) 0%, rgba(130,8,70,1) 50%, rgba(215,45,115,1) 100%);
+}
+#particles-js .elementor-container {
+    pointer-events: none;
+    text-shadow: 0 1px 5px #000000;
+}
+#particles-js canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+/* Gradient BG */
+.gradient-bg {
+    background: rgb(130,8,70);
+    background: linear-gradient(180deg, rgba(34,34,34,1) 0%, rgba(130,8,70,1) 50%, rgba(215,45,115,1) 100%);
+}
 /*--- Home Buttons ---*/
 section.home-buttons [data-button] {
     margin: 0;

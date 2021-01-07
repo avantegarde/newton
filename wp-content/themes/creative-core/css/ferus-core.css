@@ -73,7 +73,7 @@ body {
  *--- Typography ---*
  *------------------*/
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Roboto Slab', 'PT Serif', Cambria, 'Hoefler Text', Utopia, 'Liberation Serif', 'Nimbus Roman No9 L Regular', Times, 'Times New Roman', serif;
+  font-family: 'Oxygen', 'Source Sans Pro', Roboto, 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Myriad Pro', 'Segoe UI', Myriad, Helvetica, 'Lucida Grande', 'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, Arial, sans-serif;
   font-weight: 700;
   clear:none;
   color: #820846;
@@ -987,6 +987,11 @@ section#page-bottom {
   background: rgba(0,0,0,0.8);
   border: 2px solid #820846;
   box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+  border-radius: 15px;
+}
+.line-box > .section-title {
+  margin: 0 0 15px 0 !important;
+  color: #d72d73;
 }
 /*----------------------*
  *------ Parallax ------*
@@ -3773,6 +3778,12 @@ article.single-post .entry-footer .tags > a:hover {
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
   }
+}
+/*--- Flex V-align ---*/
+.v-align-flex {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 /*------------------------*
  *--------- CTAs ---------*
