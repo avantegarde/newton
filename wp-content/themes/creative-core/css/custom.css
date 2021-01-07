@@ -26,7 +26,8 @@ nav.navbar-default .primary > li > a {
 nav.navbar-default .primary > li:hover > a,
 nav.navbar-default .primary > li.current-menu-item > a,
 nav.navbar-default .primary > li.current_page_item > a,
-nav.navbar-default .primary > li.current_menu-parent > a {
+nav.navbar-default .primary > li.current_menu-parent > a,
+nav.navbar-default .primary li.current-menu-ancestor > a {
     color: #ffffff;
     text-shadow: 0 0 5px #d72d73;
 }
@@ -37,6 +38,41 @@ nav.navbar-default .primary li ul {
     background: rgba(255,255,255,0.8);
     border-color: #d72d73;
     border-radius: 6px;
+}
+nav.navbar-default .primary li ul li {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 600;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+@media screen and (max-width: 767px) {
+    header nav.navbar-default #navbar-main {
+        width: calc(100% + 45px) !important;
+        margin-left: -30px;
+        padding: 0 30px;
+        background: rgb(34,34,34);
+        background: linear-gradient(0deg, rgba(34,34,34,1) 0%, rgba(34,34,34,1) 85%, rgba(34,34,34,0) 100%);
+    }
+    header nav.navbar-default #navbar-main ul#primary {
+        margin-top: 30px;
+    }
+    nav.navbar-default .primary li ul {
+        background: none;
+    }
+    nav.navbar-default .primary li ul li a {
+        color: #ffffff;
+    }
+    nav.navbar-default .primary > li > a:before {
+        display: none;
+    }
+    nav.navbar-default .primary li ul li:hover > a,
+    nav.navbar-default .primary li ul li.current-menu-item > a,
+    nav.navbar-default .primary li.current-menu-ancestor > a {
+        color: #ffffff;
+        text-shadow: 0 0 5px #d72d73;
+    }
 }
 /* Homepage Particles Section */
 #particles-js {
@@ -68,70 +104,23 @@ nav.navbar-default .primary li ul {
     background: rgb(130,8,70);
     background: linear-gradient(180deg, rgba(34,34,34,1) 0%, rgba(130,8,70,1) 50%, rgba(215,45,115,1) 100%);
 }
-/*--- Home Buttons ---*/
-section.home-buttons [data-button] {
-    margin: 0;
+/*--- Page Header ---*/
+#page-header {
+    padding-top: 150px;
+    background: rgb(130,8,70);
+    background: linear-gradient(180deg, rgba(34,34,34,1) 0%, rgba(130,8,70,1) 50%, rgba(215,45,115,1) 100%);
 }
-@media screen and (max-width: 1200px) {
-    section.home-buttons [data-button] {
-        font-size: 20px;
-        padding: .65em 1em .65em 1em;
-    }
+#page-header canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
 }
-@media screen and (max-width: 991px) {
-    section.home-buttons [data-button] {
-        font-size: 16px;
-        font-weight: 600;
-        padding: .65em .65em .65em .65em;
-    }
-}
-@media screen and (max-width: 767px) {
-    section.home-buttons [data-button] {
-        font-size: 16px;
-        font-weight: 600;
-        padding: .65em .65em .65em .65em;
-        margin: 5px 0;
-    }
-}
-/*--- Our Philosophy ---*/
-.our-philosophy {
-    padding-top: 60px;
-}
-.our-philosophy p {
-    margin-bottom: 30px;
-}
-/*--- Have A Question ---*/
-.have-question {
-    padding: 15px;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.25);
-}
-.have-question .gform_footer {
-    text-align: center;
-}
-/*--- Machine Title ---*/
-.machine-block {
-    font-size: 20px;
-    line-height: 24px;
-}
-.machine-title {
-    display: block;
-    font-size: 34px;
-    line-height: 44px;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: #000000;
-}
-.machine-title span {
-    display: block;
-    margin: 8px 0 10px 0;
-    font-size: 60px;
-    font-weight: 800;
-    color: #1b8483;
-}
-.machine-title strong {
-    font-weight: 800;
-    color: #1b8483;
-}
-.machine-block [data-button] {
-    font-size: 18px;
+#page-header .header-img,
+#page-header .elementor-container {
+    position: relative;
+    z-index: 10;
+    background: none;
 }

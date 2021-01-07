@@ -2078,9 +2078,9 @@ section .full-image img {
   max-width: calc(100% - 30px);
   padding: 15px;
   background: rgba(0,0,0,0.8);
-  border: 2px solid #820846;
-  border-radius: 5px;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.75);
+  border: 2px solid #d72d73;
+  border-radius: 15px;
+  box-shadow: 0 1px 15px #000000;
   color: #ffffff;
   text-align: center;
   position: absolute;
@@ -4557,7 +4557,7 @@ form.membership label.gfield_label {
   font-size: 14px;
   line-height: 16px;
   font-weight: 400;
-  background: #820846;
+  background: #222222;
   color: #fafafa;
   text-align: center;
 }

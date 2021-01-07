@@ -24,12 +24,12 @@ $blog_url = get_post_type_archive_link('projects');
 ?>
 
 <?php
-    $img = wp_get_attachment_image_src(get_post_thumbnail_id(get_option('page_for_posts')),'full');
-    $image = $img ? $img[0] : get_template_directory_uri() . '/inc/images/hero.jpg';
+    /*$img = wp_get_attachment_image_src(get_post_thumbnail_id(get_option('page_for_posts')),'full');
+    $image = $img ? $img[0] : get_template_directory_uri() . '/inc/images/hero.jpg';*/
 ?>
 <div id="page-header" class="">
-    <div class="header-img parallax v-align" data-plx-img="<?php echo $image; ?>">
-        <div class="header-content v-inner">
+    <div class="header-img v-align-flex">
+        <div class="header-content">
             <?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
         </div>
     </div>

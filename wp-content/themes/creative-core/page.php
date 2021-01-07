@@ -24,13 +24,13 @@ if($iHeight) {
 ?>
 <?php if($bannerHeight != 'None'): ?>
     <?php
-    $feat_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'original' );
-    $image = $feat_image[0] ? $feat_image[0] : get_template_directory_uri() . '/inc/images/hero.jpg';
+    /*$feat_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'original' );
+    $image = $feat_image ? $feat_image[0] : get_template_directory_uri() . '/inc/images/hero.jpg'; */
     $contentLocation = custom_header_content_get_meta('custom_header_content_location') ? custom_header_content_get_meta('custom_header_content_location') : 'content-center';
     ?>
     <div id="page-header" class="<?php echo $contentLocation; ?> <?php echo strtolower($bannerHeight) ?>">
-        <div class="header-img parallax v-align" data-plx-img="<?php echo $image; ?>">
-            <div class="header-content v-inner">
+        <div class="header-img v-align-flex">
+            <div class="header-content">
                 <?php
                 $customTitle = html_entity_decode( custom_header_content_get_meta('custom_header_content_title') );
                 $customHeaderCont = html_entity_decode( custom_header_content_get_meta('custom_header_content_content') );

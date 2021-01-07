@@ -15,9 +15,9 @@ jQuery(document).ready(function ($) {
      * Page Header Particles
      * particlesJS.load(@dom-id, @path-json, @callback (optional));
      */
-    /*particlesJS.load('page-header', '/wp-content/themes/creative-core/js/particlesjs-page-config.json', function() {
+    particlesJS.load('page-header', '/wp-content/themes/creative-core/js/particlesjs-page-config.json', function() {
         console.log('callback - particles.js config loaded');
-    });*/
+    });
 
     /**
      * Header Search
