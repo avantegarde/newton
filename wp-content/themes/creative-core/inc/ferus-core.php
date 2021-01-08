@@ -33,6 +33,7 @@ function ferus_core_enqueue_custom_scripts() {
     }
     wp_enqueue_script('fc-eqcss', get_template_directory_uri() . '/js/EQCSS.min.js', array(), 1.0, true);
     wp_enqueue_script('fc-particles', get_template_directory_uri() . '/js/particles.min.js', array(), 1.0, true);
+    //wp_enqueue_script('fc-rellax', get_template_directory_uri() . '/js/rellax.min.js', array(), 1.0, true);
     wp_enqueue_script('fc-default-script', get_template_directory_uri() . '/js/ferus-core.js', array('jquery'), 1.0, true);
 
     /*=============================*/

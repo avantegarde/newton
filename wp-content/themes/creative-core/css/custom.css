@@ -102,7 +102,45 @@ nav.navbar-default .primary li ul li {
 /* Gradient BG */
 .gradient-bg {
     background: rgb(130,8,70);
+    /*background: linear-gradient(180deg, #222 0%, #820846 50%, #d72d73 100%);*/
     background: linear-gradient(180deg, rgba(34,34,34,1) 0%, rgba(130,8,70,1) 50%, rgba(215,45,115,1) 100%);
+}
+/*--- Animated Gradient BG ---*/
+.gradient-bg-animated {
+    background: linear-gradient(45deg, #222222, #820846, #d72d73);
+    background-size: 600% 600%;
+    -webkit-animation: MovingGradient 30s ease infinite;
+    -moz-animation: MovingGradient 30s ease infinite;
+    -o-animation: MovingGradient 30s ease infinite;
+    animation: MovingGradient 30s ease infinite;
+}
+@-webkit-keyframes MovingGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes MovingGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes MovingGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes MovingGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+/* Triangle BG */
+.triangle-bg {
+    background: rgb(130,8,70);
+    background-image: url('/wp-content/themes/creative-core/inc/images/triangle-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 /*--- Page Header ---*/
 #page-header {
